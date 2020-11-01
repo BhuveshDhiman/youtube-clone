@@ -14,15 +14,21 @@
   margin-left: 15px;
 }
 .header__input {
+  height: 30px;
   display: flex;
   align-items: center;
   width: 40%;
   border: 1px solid lightgray;
 }
-.header__inputButton {
-  width: 50px !important;
+.header__inputButtonCont {
+  height: 30px;
+  display: flex;
+  align-items: center;
   background-color: #fafafa;
   border-left: 1px solid lightgray;
+}
+.header__inputButton {
+  width: 50px !important;
   color: gray;
 }
 .header__input > input {

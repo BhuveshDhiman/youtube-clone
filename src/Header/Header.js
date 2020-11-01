@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import VideoCallIcon from '@material-ui/icons/VideoCall';
@@ -8,20 +9,33 @@ import Avatar from '@material-ui/core/Avatar';
 import './header.css';
 
 function Header() {
+  const [inputSearch, setInputSearch] = useState('');
+
   return (
     <div className='header'>
       <div className='header__left'>
         <MenuIcon></MenuIcon>
-        <img
-          className='header__logo'
-          src='https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/YouTube_Logo.svg/1280px-YouTube_Logo.svg.png'
-          alt=''
-        ></img>
+        <Link to='/'>
+          <img
+            className='header__logo'
+            src='https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/YouTube_Logo.svg/1280px-YouTube_Logo.svg.png'
+            alt=''
+          ></img>
+        </Link>
       </div>
 
       <div className='header__input'>
-        <input type='text' placeholder='Search'></input>
-        <SearchIcon className='header__inputButton'></SearchIcon>
+        <input
+          type='text'
+          placeholder='Search (try searching Technical Guruji)'
+          value={inputSearch}
+          onChange={(e) => setInputSearch(e.target.value)}
+        ></input>
+        <Link to={`/search/${inputSearch}`}>
+          <div className='header__inputButtonCont'>
+            <SearchIcon className='header__inputButton'></SearchIcon>
+          </div>
+        </Link>
       </div>
 
       <div className='header__icons'>
