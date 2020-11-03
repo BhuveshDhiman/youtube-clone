@@ -3,8 +3,12 @@ import React from 'react';
 import ChannelRow from './ChannelRow/ChannelRow';
 import './SearchPage.css';
 import VideoRow from './VideoRow/VideoRow';
+import { useSelector } from 'react-redux';
 
 function SearchPage() {
+  const videosData = useSelector((state) => state.reducer.videoResponse);
+  console.log('<><><><><>', videosData);
+
   return (
     <div className='searchPage'>
       <div className='searchPage__filter'>
@@ -15,7 +19,7 @@ function SearchPage() {
       <hr></hr>
 
       <ChannelRow
-        image='https://yt3.ggpht.com/a/AATXAJynsAJHriYs7ZpEUgZnuSViLKGaUrtHq5F6zM4lQg=s176-c-k-c0x00ffffff-no-rj-mo'
+        image={''}
         channel='Technical Guruji'
         verified
         subs='19.7M'
@@ -25,7 +29,21 @@ function SearchPage() {
 
       <hr></hr>
 
-      <VideoRow
+      {videosData.map((item, index) => {
+        return (
+          <ChannelRow
+            key={index}
+            image={item.snippet.thumbnails.default.url}
+            channel={item.snippet.channelTitle}
+            verified
+            subs='19.7M'
+            noOfVideos={3372}
+            desc={item.snippet.description}
+          />
+        );
+      })}
+
+      {/* <VideoRow
         views='4.2M'
         subs='19.7'
         desc='Namaskaar Dosto, is video mein maine aapse baat ki hai Apple ke latest iPhone 12 family ke baare mein jaha pe hai'
@@ -53,7 +71,7 @@ function SearchPage() {
         channel='Technical Guruji'
         title='Tech Talks #1275'
         image='https://i.ytimg.com/an_webp/Ayw9JXl-4eE/mqdefault_6s.webp?du=3000&sqp=CLzN-vwF&rs=AOn4CLA3rsDhpEnPlUAULxZQ_r1XQpqlWQ'
-      ></VideoRow>
+      ></VideoRow> */}
     </div>
   );
 }

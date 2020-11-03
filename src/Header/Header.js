@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
@@ -6,10 +6,27 @@ import VideoCallIcon from '@material-ui/icons/VideoCall';
 import AppsIcon from '@material-ui/icons/Apps';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import Avatar from '@material-ui/core/Avatar';
+import youtube from '../API/youtube';
+import { useDispatch } from 'react-redux';
 import './header.css';
+import * as actions from '../actions';
 
 function Header() {
+  const dispatch = useDispatch();
+
   const [inputSearch, setInputSearch] = useState('');
+  const [data, setData] = useState([]);
+
+  const handleSubmit = async (inputSearch) => {
+    const response = await youtube.get('/search', {
+      params: {
+        q: inputSearch,
+      },
+    });
+    setData(response.data.items);
+    dispatch(actions.videoResponse(response.data.items));
+  };
+  console.log('>>>', data);
 
   return (
     <div className='header'>
@@ -29,10 +46,15 @@ function Header() {
           type='text'
           placeholder='Search (try searching Technical Guruji)'
           value={inputSearch}
-          onChange={(e) => setInputSearch(e.target.value)}
+          onChange={(e) => {
+            setInputSearch(e.target.value);
+          }}
         ></input>
         <Link to={`/search/${inputSearch}`}>
-          <div className='header__inputButtonCont'>
+          <div
+            className='header__inputButtonCont'
+            onClick={() => handleSubmit(inputSearch)}
+          >
             <SearchIcon className='header__inputButton'></SearchIcon>
           </div>
         </Link>
