@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
@@ -15,7 +15,6 @@ function Header() {
   const dispatch = useDispatch();
 
   const [inputSearch, setInputSearch] = useState('');
-  const [data, setData] = useState([]);
 
   const handleSubmit = async (inputSearch) => {
     const response = await youtube.get('/search', {
@@ -23,10 +22,9 @@ function Header() {
         q: inputSearch,
       },
     });
-    setData(response.data.items);
+
     dispatch(actions.videoResponse(response.data.items));
   };
-  console.log('>>>', data);
 
   return (
     <div className='header'>
@@ -44,7 +42,7 @@ function Header() {
       <div className='header__input'>
         <input
           type='text'
-          placeholder='Search (try searching Technical Guruji)'
+          placeholder='Search'
           value={inputSearch}
           onChange={(e) => {
             setInputSearch(e.target.value);

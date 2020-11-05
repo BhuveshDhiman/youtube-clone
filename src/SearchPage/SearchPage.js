@@ -18,19 +18,8 @@ function SearchPage() {
 
       <hr></hr>
 
-      <ChannelRow
-        image={''}
-        channel='Technical Guruji'
-        verified
-        subs='19.7M'
-        noOfVideos={3372}
-        desc='Best Tech Youtuber'
-      />
-
-      <hr></hr>
-
       {videosData.map((item, index) => {
-        return (
+        return item.id.kind === 'youtube#channel' ? (
           <ChannelRow
             key={index}
             image={item.snippet.thumbnails.default.url}
@@ -40,7 +29,24 @@ function SearchPage() {
             noOfVideos={3372}
             desc={item.snippet.description}
           />
-        );
+        ) : null;
+      })}
+
+      <hr></hr>
+
+      {videosData.map((item, index) => {
+        return item.id.kind === 'youtube#video' ? (
+          <VideoRow
+            key={index}
+            subs='19.7M'
+            views='1M'
+            desc={item.snippet.description}
+            timestamp='1 week ago'
+            channel={item.snippet.channelTitle}
+            title={item.snippet.title}
+            image={item.snippet.thumbnails.medium.url}
+          />
+        ) : null;
       })}
 
       {/* <VideoRow

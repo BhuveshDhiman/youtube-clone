@@ -13,7 +13,7 @@ function RecommendedVideos() {
           timestamp='2 years ago'
           channelImage='https://yt3.ggpht.com/a-/AOh14GgdlUE-IRgfV7zmpRdxH9sNhkjakric8nrMpQ=s68-c-k-c0x00ffffff-no-rj-mo'
           channel='Thrace Music'
-          image='https://i.ytimg.com/an_webp/y2tEPmwWEiI/mqdefault_6s_480x270.webp?du=3000&sqp=CIiO-vwF&rs=AOn4CLA67RcRrpM3b0RS7JrNSYAw5kjwlw'
+          image='https://i.ytimg.com/vi/y2tEPmwWEiI/mqdefault.jpg'
         ></VideoCard>
 
         <VideoCard
@@ -22,7 +22,7 @@ function RecommendedVideos() {
           timestamp='6 days ago'
           channelImage='https://yt3.ggpht.com/a-/AOh14GjyyqCex06So89nuoy7ztgOIURj_Epdu3rqrw=s68-c-k-c0x00ffffff-no-rj-mo'
           channel='Nade King'
-          image='https://i.ytimg.com/an_webp/XA5YC-pvEP4/mqdefault_6s.webp?du=3000&sqp=CNi4-vwF&rs=AOn4CLA4F_wWDsknsfAr6ADEC6pN_wI-ew'
+          image='https://i.ytimg.com/vi/XA5YC-pvEP4/mqdefault.jpg'
         ></VideoCard>
 
         <VideoCard
@@ -31,7 +31,7 @@ function RecommendedVideos() {
           timestamp='1 day ago'
           channelImage='https://yt3.ggpht.com/a-/AOh14GhEEaPvxnSi56zNE2cIh0gtIjfwkjmg2YwoWw=s68-c-k-c0x00ffffff-no-rj-mo'
           channel='Mo Vlogs'
-          image='https://i.ytimg.com/an_webp/6EPYJ3MMPYE/mqdefault_6s.webp?du=3000&sqp=CNy--vwF&rs=AOn4CLCUJDJZS2z6utnQJYk4OM36WlLahQ'
+          image='https://i.ytimg.com/vi/6EPYJ3MMPYE/mqdefault.jpg'
         ></VideoCard>
 
         <VideoCard
@@ -40,7 +40,7 @@ function RecommendedVideos() {
           timestamp='1 week ago'
           channelImage='https://yt3.ggpht.com/a-/AOh14GieBl5bhpG0o40TRvr-rV-WlrpRe0B4QhzD2w=s68-c-k-c0x00ffffff-no-rj-mo'
           channel='Technical Guruji'
-          image='https://i.ytimg.com/an_webp/Y15GPvzSolY/mqdefault_6s.webp?du=3000&sqp=CIKs-vwF&rs=AOn4CLALguS3wm5tHo07F_-OIO9IRkGkgQ'
+          image='https://i.ytimg.com/vi/Y15GPvzSolY/mqdefault.jpg'
         ></VideoCard>
 
         <VideoCard
@@ -49,7 +49,7 @@ function RecommendedVideos() {
           timestamp='8 months ago'
           channelImage='https://yt3.ggpht.com/a-/AOh14GhIXCEjtFlQuen1_vKIflViRHccDOaMCdEKyA=s68-c-k-c0x00ffffff-no-rj-mo'
           channel='Gaurav Chaudhary'
-          image='https://i.ytimg.com/an_webp/H6ss8jerulY/mqdefault_6s_480x270.webp?du=3000&sqp=CPr_-fwF&rs=AOn4CLDITAd0QfXgX7MKJP90rOneHpNqFQ'
+          image='https://i.ytimg.com/vi/H6ss8jerulY/mqdefault.jpg'
         ></VideoCard>
       </div>
     </div>
