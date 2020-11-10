@@ -10,11 +10,19 @@ import youtube from '../API/youtube';
 import { useDispatch } from 'react-redux';
 import './header.css';
 import * as actions from '../actions';
+import statistics from '../API/statistics';
 
 function Header() {
   const dispatch = useDispatch();
 
   const [inputSearch, setInputSearch] = useState('');
+
+  const filterVideos = (item) => {
+    if (item.id.kind === 'youtube#video') return item;
+  };
+  const filterChannels = (item) => {
+    if (item.id.kind === 'youtube#channel') return item;
+  };
 
   const handleSubmit = async (inputSearch) => {
     const response = await youtube.get('/search', {
@@ -22,8 +30,34 @@ function Header() {
         q: inputSearch,
       },
     });
+    const videos = response.data.items.filter(filterVideos);
+    const videoIdArray = videos.map((item) => `${item.id.videoId}`).join(',');
+    const channels = response.data.items.filter(filterChannels);
 
-    dispatch(actions.videoResponse(response.data.items));
+    const channelIdArray = channels
+      .map((item) => `${item.id.channelId}`)
+      .join(',');
+
+    getStats(videoIdArray, channelIdArray, videos, channels);
+  };
+
+  const getStats = async (videoIdArray, channelIdArray, videos, channels) => {
+    const videoStatResponse = await statistics.get('/videos', {
+      params: {
+        id: videoIdArray,
+      },
+    });
+
+    const channelStatResponse = await statistics.get('/channels', {
+      params: {
+        id: channelIdArray,
+      },
+    });
+
+    dispatch(actions.videoResponse(videos));
+    dispatch(actions.channelResponse(channels));
+    dispatch(actions.videoStatResponse(videoStatResponse.data.items));
+    dispatch(actions.channelStatResponse(channelStatResponse.data.items));
   };
 
   return (
